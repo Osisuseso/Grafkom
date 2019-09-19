@@ -65,6 +65,23 @@ class PekaranganRumah{
         glVertex2d(739.4,240.33);
         glEnd();
     }
+    void Langit(){
+        glColor3ub(138,229,255);
+        glBegin(GL_QUADS);
+        glVertex2d(1313.71,511.93);
+        glVertex2d(1313.71,0);
+        glVertex2d(699.89,0);
+        glVertex2d(699.89,183.05);
+        glEnd();
+
+        glColor3ub(172,245,251);
+        glBegin(GL_QUADS);
+        glVertex2d(699.89,0);
+        glVertex2d(699.89,183.05);
+        glVertex2d(86.1,511.93);
+        glVertex2d(86.1,0);
+        glEnd();
+    }
     void Pohon(){
         for(int i=0, j=0; i<= 325; i+=65,j-=35){
 
@@ -309,6 +326,7 @@ class PekaranganRumah{
     //Fungsi Semua
     void TanahLapang(){
         Tanah();
+        Langit();
         Rumput();
         Pohon();
     }
