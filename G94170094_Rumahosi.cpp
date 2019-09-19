@@ -10,7 +10,7 @@
 using namespace std;
 
 float osiii=0;
-class Rumahku{
+class PekaranganRumah{
     public:
     void Tanah(){
         glColor3ub(158,117,72);
@@ -304,7 +304,52 @@ class Rumahku{
      //ISI ANJIR WOY
     }
 
-    void LantaiBawah(){
+
+
+    //Fungsi Semua
+    void TanahLapang(){
+        Tanah();
+        Rumput();
+        Pohon();
+    }
+    void Jalanan(){
+        Jalan();
+        Teras();
+    }
+    void Pagar(){
+        PagerRumput();
+        Trotoar();
+    }
+
+
+    void All(){
+        TanahLapang();
+        Jalanan();
+        Pagar();
+    }
+
+
+    void circle(float size){
+        int N = 180;
+        float pX, pY;
+        glBegin(GL_POLYGON);
+        for(int i = 0; i < N; i++){
+            if(i%11 == 0)
+                glColor4ub(0,0,0,1);
+            else
+                //glColor4f(red,green,blue,1);
+            pX = sin(i*2*3.14 / N);
+            pY = cos(i*2*3.14 / N);
+            glVertex2f(pX * size, pY * size);
+        }
+        glEnd();
+    }
+
+};PekaranganRumah Ground;
+
+class Rumahku{
+    public:
+    void Lantai(){
         glColor3ub(179,179,179);
         glBegin(GL_QUADS);
         glVertex2d(617,421.7);
@@ -328,6 +373,7 @@ class Rumahku{
         glVertex2d(968.72,610.14);
         glVertex2d(1181.67,496.05);
         glEnd();
+
     }
     void LantaisatuKiri(){
         glColor3ub(209,198,170);
@@ -386,7 +432,57 @@ class Rumahku{
         glVertex2d(812.469,412.812);
         glEnd();
 
-        //Jendela Kiri Bawah
+
+
+
+    }
+    void LantaisatuKanan(){
+        glColor3ub(150,99,63);
+        glBegin(GL_QUADS);
+        glVertex2d(902,364.67);
+        glVertex2d(902,461.41);
+        glVertex2d(1060,546.322);
+        glVertex2d(1060,449.583);
+        glEnd();
+
+        glColor3ub(107,66,45);
+        glBegin(GL_QUADS);
+        glVertex2d(1060,449.583);
+        glVertex2d(1060,546.32);
+        glVertex2d(1168,488.8);
+        glVertex2d(1168,392.06);
+        glEnd();
+
+        for(double i=0.0; i<=70.4; i+=17.6){
+            glColor3ub(130,79,54);
+            glBegin(GL_QUADS);
+            glVertex2d(1060,458.36+i);
+            glVertex2d(1060,467.18+i);
+            glVertex2d(1168,409.66+i);
+            glVertex2d(1168,400.85+i);
+            glEnd();
+
+        }
+    }
+    void Lantaidua(){
+        glColor3ub(168,145,123);
+        glBegin(GL_QUADS);
+        glVertex2d(1010,210.41);
+        glVertex2d(902,267.93);
+        glVertex2d(902,364.67);
+        glVertex2d(1010,307.15);
+        glEnd();
+
+        glColor3ub(209,198,170);
+        glBegin(GL_QUADS);
+        glVertex2d(722,171.65);
+        glVertex2d(722,268.39);
+        glVertex2d(902,364.67);
+        glVertex2d(902,267.93);
+        glEnd();
+
+        glPushMatrix();
+
         for(double i=0.0, j=0.0;i <= 24.106; i+=24.106, j+=45){
             glColor3ub(178,190,214);
             glBegin(GL_QUADS);
@@ -429,37 +525,22 @@ class Rumahku{
             glEnd();
 
         }
+        glPopMatrix();
+
+
+        //teras
+        glColor3ub(255,255,255);
+        glBegin(GL_QUADS);
+        glVertex2d(722.6,268.39);
+        glVertex2d(632.73,316.53);
+        glVertex2d(812.469,412.812);
+        glVertex2d(902.3,364.67);
+        glEnd();
+
 
 
     }
-    void LantaisatuKanan(){
-        glColor3ub(150,99,63);
-        glBegin(GL_QUADS);
-        glVertex2d(902,364.67);
-        glVertex2d(902,461.41);
-        glVertex2d(1060,546.322);
-        glVertex2d(1060,449.583);
-        glEnd();
-
-        glColor3ub(107,66,45);
-        glBegin(GL_QUADS);
-        glVertex2d(1060,449.583);
-        glVertex2d(1060,546.32);
-        glVertex2d(1168,488.8);
-        glVertex2d(1168,392.06);
-        glEnd();
-
-        for(double i=0.0; i<=70.4; i+=17.6){
-            glColor3ub(130,79,54);
-            glBegin(GL_QUADS);
-            glVertex2d(1060,458.36+i);
-            glVertex2d(1060,467.18+i);
-            glVertex2d(1168,409.66+i);
-            glVertex2d(1168,400.85+i);
-            glEnd();
-
-        }
-
+    void Pintu(){
         glColor3ub(178,190,214);
         glBegin(GL_QUADS);
         glVertex2d(910,375.236);
@@ -524,75 +605,394 @@ class Rumahku{
         glVertex2d(965,492.932);
         glEnd();
 
-        //Jendela Kiri Bawah
+        //pintu atas
+        glPushMatrix();
+        glTranslated(-74,-136.556,0);
+        glColor3ub(178,190,214);
+        glBegin(GL_QUADS);
+        glVertex2d(910,375.236);
+        glVertex2d(910,463.018);
+        glVertex2d(965,492.93);
+        glVertex2d(965,405.15);
+        glEnd();
+
+        glColor3ub(168,145,123);
+        glBegin(GL_QUADS);
+        glVertex2d(910,375.24);
+        glVertex2d(907,374.08);
+        glVertex2d(907,464.17);
+        glVertex2d(910,463.02);
+        glEnd();
+
+        glColor3ub(255,255,255);
+        glBegin(GL_QUADS);
+        glVertex2d(929.19,385.56);
+        glVertex2d(924.05,382.86);
+        glVertex2d(910,426.32);
+        glVertex2d(910,444.3);
+        glEnd();
+
+        glColor3ub(255,255,255);
+        glBegin(GL_QUADS);
+        glVertex2d(936.46,389.62);
+        glVertex2d(934.71,388.67);
+        glVertex2d(910.25,463.33);
+        glVertex2d(912,464.28);
+        glEnd();
+
+        glColor3ub(255,255,255);
+        glBegin(GL_QUADS);
+        glVertex2d(957.21,400.71);
+        glVertex2d(952.17,398.05);
+        glVertex2d(927.71,472.71);
+        glVertex2d(932.71,475.37);
+        glEnd();
+
+        glColor3ub(255,255,255);
+        glBegin(GL_QUADS);
+        glVertex2d(964.77,404.76);
+        glVertex2d(963.02,403.86);
+        glVertex2d(938.56,478.52);
+        glVertex2d(940.31,479.43);
+        glEnd();
+
+        glColor3ub(102,102,102);
+        glBegin(GL_QUADS);
+        glVertex2d(938,390.77);
+        glVertex2d(937,389.62);
+        glVertex2d(937,477.4);
+        glVertex2d(938,478.55);
+        glEnd();
+
+        glColor3ub(255,255,255);
+        glBegin(GL_QUADS);
+        glVertex2d(909.26,463.02);
+        glVertex2d(907.21,464.17);
+        glVertex2d(965,495.24);
+        glVertex2d(965,492.932);
+        glEnd();
+        glPopMatrix();
+    }
+    void Jendela(){
         for(double i=0.0, j=0.0;i <= 24.106; i+=24.106, j+=45){
             glColor3ub(178,190,214);
             glBegin(GL_QUADS);
-            glVertex2d(1010+j,429.26+i);
-            glVertex2d(973+j,409.068+i);
-            glVertex2d(973+j,490.238+i);
-            glVertex2d(1010+j,510.425+i);
+            glVertex2d(640+j,326.464+i);
+            glVertex2d(640+j,407.66+i);
+            glVertex2d(678+j,427.856+i);
+            glVertex2d(678+j,346.69+i);
             glEnd();
 
             glColor3ub(168,145,123);
             glBegin(GL_QUADS);
-            glVertex2d(973+j,409.068+i);
-            glVertex2d(973+j,490.238+i);
-            glVertex2d(970+j,491.39+i);
-            glVertex2d(970+j,407.91+i);
+            glVertex2d(640+j,326.464+i);
+            glVertex2d(638+j,325.314+i);
+            glVertex2d(638+j,408.784+i);
+            glVertex2d(640+j,407.634+i);
             glEnd();
 
             glColor3ub(255,255,255);
             glBegin(GL_QUADS);
-            glVertex2d(1002.18+j,424.81+i);
-            glVertex2d(997.18+j,422.12+i);
-            glVertex2d(974.46+j,491.15+i);
-            glVertex2d(979.5+j,493.84+i);
+            glVertex2d(669.2+j,342.244+i);
+            glVertex2d(664.16+j,339.554+i);
+            glVertex2d(641.48+j,408.444+i);
+            glVertex2d(646.49+j,411.244+i);
             glEnd();
 
             glColor3ub(255,255,255);
             glBegin(GL_QUADS);
-            glVertex2d(1009.77+j,428.87+i);
-            glVertex2d(1007.99+j,427.93+i);
-            glVertex2d(985.31+j,496.96+i);
-            glVertex2d(987.06+j,497.9+i);
+            glVertex2d(675.01+j,345.354+i);
+            glVertex2d(676.76+j,346.304+i);
+            glVertex2d(654.08+j,415.294+i);
+            glVertex2d(652.33+j,414.354+i);
             glEnd();
 
             glColor3ub(255,255,255);
             glBegin(GL_QUADS);
-            glVertex2d(973+j,490.238+i);
-            glVertex2d(1010+j,510.425+i);
-            glVertex2d(1010+j,512.73+i);
-            glVertex2d(973+j,491.39+i);
+            glVertex2d(678+j,430.17+i);
+            glVertex2d(678+j,427.86+i);
+            glVertex2d(640.18+j,407.67+i);
+            glVertex2d(637.89+j,408.82+i);
             glEnd();
+
         }
 
-        for(double i=0.0, j=0.0; i <=26; i+=13, j+=8.4){
-            glColor3ub(150,99,63);
+        //Jendela Kiri Bawah
+        glPushMatrix();
+        glTranslated(100,-139.14,0);
+        for(double i=0.0, j=0.0;i <= 24.106; i+=24.106, j+=45){
+            glColor3ub(178,190,214);
             glBegin(GL_QUADS);
-            glVertex2d(940+i,474.6+j);
-            glVertex2d(933+i,471.24+j);
-            glVertex2d(933+i,566.33+j);
-            glVertex2d(940+i,569.693+j);
+            glVertex2d(640+j,326.464+i);
+            glVertex2d(640+j,407.66+i);
+            glVertex2d(678+j,427.856+i);
+            glVertex2d(678+j,346.69+i);
             glEnd();
 
-            glColor3ub(107,66,45);
+            glColor3ub(168,145,123);
             glBegin(GL_QUADS);
-            glVertex2d(940+i,474.6+j);
-            glVertex2d(940+i,569.693+j);
-            glVertex2d(947+i,565.95+j);
-            glVertex2d(947+i,470.86+j);
+            glVertex2d(640+j,326.464+i);
+            glVertex2d(638+j,325.314+i);
+            glVertex2d(638+j,408.784+i);
+            glVertex2d(640+j,407.634+i);
+            glEnd();
+
+            glColor3ub(255,255,255);
+            glBegin(GL_QUADS);
+            glVertex2d(669.2+j,342.244+i);
+            glVertex2d(664.16+j,339.554+i);
+            glVertex2d(641.48+j,408.444+i);
+            glVertex2d(646.49+j,411.244+i);
+            glEnd();
+
+            glColor3ub(255,255,255);
+            glBegin(GL_QUADS);
+            glVertex2d(675.01+j,345.354+i);
+            glVertex2d(676.76+j,346.304+i);
+            glVertex2d(654.08+j,415.294+i);
+            glVertex2d(652.33+j,414.354+i);
+            glEnd();
+
+            glColor3ub(255,255,255);
+            glBegin(GL_QUADS);
+            glVertex2d(678+j,430.17+i);
+            glVertex2d(678+j,427.86+i);
+            glVertex2d(640.18+j,407.67+i);
+            glVertex2d(637.89+j,408.82+i);
+            glEnd();
+
+        }
+        glPopMatrix();
+
+        //jendela kanan bawah
+        glPushMatrix();
+        glTranslated(333,82.606,0);
+        for(double i=0.0, j=0.0;i <= 24.106; i+=24.106, j+=45){
+            glColor3ub(178,190,214);
+            glBegin(GL_QUADS);
+            glVertex2d(640+j,326.464+i);
+            glVertex2d(640+j,407.66+i);
+            glVertex2d(678+j,427.856+i);
+            glVertex2d(678+j,346.69+i);
+            glEnd();
+
+            glColor3ub(168,145,123);
+            glBegin(GL_QUADS);
+            glVertex2d(640+j,326.464+i);
+            glVertex2d(638+j,325.314+i);
+            glVertex2d(638+j,408.784+i);
+            glVertex2d(640+j,407.634+i);
+            glEnd();
+
+            glColor3ub(255,255,255);
+            glBegin(GL_QUADS);
+            glVertex2d(669.2+j,342.244+i);
+            glVertex2d(664.16+j,339.554+i);
+            glVertex2d(641.48+j,408.444+i);
+            glVertex2d(646.49+j,411.244+i);
+            glEnd();
+
+            glColor3ub(255,255,255);
+            glBegin(GL_QUADS);
+            glVertex2d(675.01+j,345.354+i);
+            glVertex2d(676.76+j,346.304+i);
+            glVertex2d(654.08+j,415.294+i);
+            glVertex2d(652.33+j,414.354+i);
+            glEnd();
+
+            glColor3ub(255,255,255);
+            glBegin(GL_QUADS);
+            glVertex2d(678+j,430.17+i);
+            glVertex2d(678+j,427.86+i);
+            glVertex2d(640.18+j,407.67+i);
+            glVertex2d(637.89+j,408.82+i);
+            glEnd();
+
+        }
+        glPopMatrix();
+    }
+    void pager(){
+        //pager kanan
+        for(double i=0, j=0; i<= 70; i+=10, j+=5.29){
+            glColor3ub(77,77,77);
+            glBegin(GL_QUADS);
+            glVertex2d(826+i,361.56-j);
+            glVertex2d(823+i,362.89-j);
+            glVertex2d(823+i,400.22-j);
+            glVertex2d(826+i,398.89-j);
+            glEnd();
+
+            glColor3ub(102,102,102);
+            glBegin(GL_QUADS);
+            glVertex2d(823+i,362.89-j);
+            glVertex2d(823+i,400.22-j);
+            glVertex2d(821+i,399.03-j);
+            glVertex2d(821+i,361.7-j);
             glEnd();
 
             glColor3ub(128,128,128);
             glBegin(GL_QUADS);
-            glVertex2d(940.27+i,467.5+j);
-            glVertex2d(933+i,471.24+j);
-            glVertex2d(940+i,474.6+j);
-            glVertex2d(947+i,470.86+j);
+            glVertex2d(826+i,361.56-j);
+            glVertex2d(823+i,362.89-j);
+            glVertex2d(821+i,361.7-j);
+            glVertex2d(823+i,360-j);
             glEnd();
         }
 
+        glColor3ub(128,128,128);
+        glBegin(GL_QUADS);
+        glVertex2d(893.24,318.14);
+        glVertex2d(810.96,362.19);
+        glVertex2d(810.96,366.63);
+        glVertex2d(898,320.34);
+        glEnd();
+
+        glColor3ub(77,77,77);
+        glBegin(GL_QUADS);
+        glVertex2d(898,320.34);
+        glVertex2d(810.96,366.63);
+        glVertex2d(811,370.513);
+        glVertex2d(898,324.26);
+        glEnd();
+
+        //pager kiri
+        glPushMatrix();
+        glTranslated(-168,-90.09,0);
+        for(double i=0, j=0; i<= 70; i+=10, j+=5.29){
+            glColor3ub(77,77,77);
+            glBegin(GL_QUADS);
+            glVertex2d(826+i,361.56-j);
+            glVertex2d(823+i,362.89-j);
+            glVertex2d(823+i,400.22-j);
+            glVertex2d(826+i,398.89-j);
+            glEnd();
+
+            glColor3ub(102,102,102);
+            glBegin(GL_QUADS);
+            glVertex2d(823+i,362.89-j);
+            glVertex2d(823+i,400.22-j);
+            glVertex2d(821+i,399.03-j);
+            glVertex2d(821+i,361.7-j);
+            glEnd();
+
+            glColor3ub(128,128,128);
+            glBegin(GL_QUADS);
+            glVertex2d(826+i,361.56-j);
+            glVertex2d(823+i,362.89-j);
+            glVertex2d(821+i,361.7-j);
+            glVertex2d(823+i,360-j);
+            glEnd();
+
+            glColor3ub(128,128,128);
+            glBegin(GL_QUADS);
+            glVertex2d(893.24,318.14);
+            glVertex2d(810.96,362.19);
+            glVertex2d(810.96,366.63);
+            glVertex2d(898,320.34);
+            glEnd();
+
+            glColor3ub(77,77,77);
+            glBegin(GL_QUADS);
+            glVertex2d(898,320.34);
+            glVertex2d(810.96,366.63);
+            glVertex2d(811,370.513);
+            glVertex2d(898,324.26);
+            glEnd();
+        }
+        glPopMatrix();
+
+        //kayu penopan atap kiri
+        glPushMatrix();
+        glTranslated(-165,-87.815,0);
+        glColor3ub(107,66,45);
+        glBegin(GL_QUADS);
+        glVertex2d(819,307.99);
+        glVertex2d(811,311.73);
+        glVertex2d(811,406.83);
+        glVertex2d(819,403.09);
+        glEnd();
+
+        glColor3ub(150,99,63);
+        glBegin(GL_QUADS);
+        glVertex2d(811,311.73);
+        glVertex2d(811,406.83);
+        glVertex2d(805,403.47);
+        glVertex2d(805,308.38);
+        glEnd();
+        glPopMatrix();
+
+        //penopang bawah kanan
+        for(double i=0,j=0;i<=32;i+=16,j+=8.4){
+            glColor3ub(107,66,45);
+            glBegin(GL_QUADS);
+            glVertex2d(978-i,487.65-j);
+            glVertex2d(978-i,582.74-j);
+            glVertex2d(970-i,586.49-j);
+            glVertex2d(970-i,491.39-j);
+            glEnd();
+
+            glColor3ub(150,99,63);
+            glBegin(GL_QUADS);
+            glVertex2d(970-i,586.49-j);
+            glVertex2d(970-i,491.39-j);
+            glVertex2d(964-i,488.03-j);
+            glVertex2d(964-i,583.13-j);
+            glEnd();
+        }
+
+
+        for(double i=0,j=0;i<=144;i+=9,j+=4.723){
+            glColor3ub(102,102,102);
+            glBegin(GL_QUADS);
+            glVertex2d(795-i,361.17-j);
+            glVertex2d(795-i,398.54-j);
+            glVertex2d(798-i,399.7-j);
+            glVertex2d(798-i,362.361-j);
+            glEnd();
+
+            glColor3ub(77,77,77);
+            glBegin(GL_QUADS);
+            glVertex2d(798-i,399.7-j);
+            glVertex2d(798-i,362.361-j);
+            glVertex2d(800-i,361.07-j);
+            glVertex2d(800-i,398.54-j);
+            glEnd();
+        }
+
+        glColor3ub(128,128,128);
+        glBegin(GL_QUADS);
+        glVertex2d(811,362.19);
+        glVertex2d(811,366.63);
+        glVertex2d(648,279.55);
+        glVertex2d(652.54,277.31);
+        glEnd();
+
+        glColor3ub(102,102,102);
+        glBegin(GL_QUADS);
+        glVertex2d(811,366.63);
+        glVertex2d(648,279.55);
+        glVertex2d(648,283.47);
+        glVertex2d(811,370.51);
+        glEnd();
+
+        glColor3ub(107,66,45);
+        glBegin(GL_QUADS);
+        glVertex2d(819,307.99);
+        glVertex2d(811,311.73);
+        glVertex2d(811,406.83);
+        glVertex2d(819,403.09);
+        glEnd();
+
+        glColor3ub(150,99,63);
+        glBegin(GL_QUADS);
+        glVertex2d(811,311.73);
+        glVertex2d(811,406.83);
+        glVertex2d(805,403.47);
+        glVertex2d(805,308.38);
+        glEnd();
+    }
+    void Atap(){
+        //Atap kanan
         glColor3ub(128,128,128);
         glBegin(GL_QUADS);
         glVertex2d(972.36,283.75);
@@ -642,60 +1042,69 @@ class Rumahku{
         glEnd();
 
 
+        //atap kiri
+        glColor3ub(128,128,128);
+        glBegin(GL_QUADS);
+        glVertex2d(759.345,108.567);
+        glVertex2d(939.083,204.85);
+        glVertex2d(972.36,187.01);
+        glVertex2d(792.63,90.72);
+        glEnd();
+
+        glColor3ub(77,77,77);
+        glBegin(GL_QUADS);
+        glVertex2d(939.083,204.85);
+        glVertex2d(972.36,187.01);
+        glVertex2d(1010,210.41);
+        glVertex2d(902,267.93);
+        glEnd();
+
+        glColor3ub(102,102,102);
+        glBegin(GL_QUADS);
+        glVertex2d(939.083,204.85);
+        glVertex2d(902,267.93);
+        glVertex2d(722.6,171.65);
+        glVertex2d(759.345,108.567);
+        glEnd();
+
+        glColor3ub(128,128,128);
+        glBegin(GL_QUADS);
+        glVertex2d(812.47,316.07);
+        glVertex2d(902,267.93);
+        glVertex2d(722.6,171.65);
+        glVertex2d(632.73,219.79);
+        glEnd();
+
+        glColor3ub(77,77,77);
+        glBegin(GL_QUADS);
+        glVertex2d(812.47,316.07);
+        glVertex2d(902,267.93);
+        glVertex2d(902,273.35);
+        glVertex2d(812,321.5);
+        glEnd();
+
+        glColor3ub(102,102,102);
+        glBegin(GL_QUADS);
+        glVertex2d(812.47,316.07);
+        glVertex2d(812,321.5);
+        glVertex2d(633,225.21);
+        glVertex2d(633,219.79);
+        glEnd();
 
 
     }
-    void Lantaidua(){
-
-    }
-
-    //Fungsi Semua
-    void TanahLapang(){
-        Tanah();
-        Rumput();
-        Pohon();
-    }
-    void Jalanan(){
-        Jalan();
-        Teras();
-    }
-    void Pagar(){
-        PagerRumput();
-        Trotoar();
-    }
-    void Rumah(){
-        LantaiBawah();
+    void All(){
+        Lantai();
         LantaisatuKiri();
         LantaisatuKanan();
-    }
-
-    void All(){
-        TanahLapang();
-        Jalanan();
-        Pagar();
-        Rumah();
-
-    }
-
-
-    void circle(float size){
-        int N = 180;
-        float pX, pY;
-        glBegin(GL_POLYGON);
-        for(int i = 0; i < N; i++){
-            if(i%11 == 0)
-                glColor4ub(0,0,0,1);
-            else
-                //glColor4f(red,green,blue,1);
-            pX = sin(i*2*3.14 / N);
-            pY = cos(i*2*3.14 / N);
-            glVertex2f(pX * size, pY * size);
-        }
-        glEnd();
+        Lantaidua();
+        Pintu();
+        Jendela();
+        pager();
+        Atap();
     }
 
 };Rumahku RumahOsi;
-
 
 static void CursorPositionCallback(GLFWwindow *window, double xPos, double yPos);
 
@@ -774,6 +1183,7 @@ int main(void) {
       //glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
 
 
+      Ground.All();
       RumahOsi.All();
 
 
